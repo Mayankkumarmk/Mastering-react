@@ -1,0 +1,32 @@
+{
+  "name": "mastering-react",
+  "version": "1.0.0",
+  "description": "Master react with me",
+  "scripts": {
+    "build": "parcel build index.html",
+    "start": "parcel index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayankkumarmk/Mastering-react.git"
+  },
+  "author": "Mayank kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayankkumarmk/Mastering-react/issues"
+  },
+  "homepage": "https://github.com/Mayankkumarmk/Mastering-react#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0"
+  },
+  "browserList": [
+    "Last 2 versions"
+  ]
+}
