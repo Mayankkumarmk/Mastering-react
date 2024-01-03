@@ -1,8 +1,8 @@
-import resList from "./utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimer from "./Shimer";
 import {Link} from "react-router-dom";
+import useOnlineStatus  from "./utils/useOnlineStatus";
 
 
 const Body = () => {
@@ -14,7 +14,7 @@ const Body = () => {
 
     useEffect(() => {
         fetchData();
-    }, [])
+    },[])
 
     const fetchData = async () => {
         const data = await fetch(
@@ -27,23 +27,27 @@ const Body = () => {
         setFilteredRestaurants(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
     }
 
-
+    const onlineStatus = useOnlineStatus();
+    if(onlineStatus == false) return <h1>You are offline</h1>
+    
 
     return ListOfRestaurants.length == 0
         ? <Shimer />
         : (
             <div className="body">
                 <div className="filter">
-                    <div className="search">
+                    <div className="p-5 bg-purple-50 my-5">
                         <input
+                            placeholder="Search"
                             type="text"
-                            className="search-box"
+                            className="focus:bg-cyan-50 p-2"
                             value={searchText}
                             onChange={(e) => {
                                 setSearchText(e.target.value);
                             }}
                         />
                         <button
+                            className="bg-cyan-600 hover:bg-purple-500 m-2 rounded-md p-1 text-white"
                             onClick={() => {
                                 const filteredRestaurants = ListOfRestaurants.filter(
                                     (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -67,7 +71,7 @@ const Body = () => {
                         Top Rated Restaurants
                     </button>
                 </div>
-                <div className="res-container">
+                <div className="flex flex-wrap">
                     {
                         filteredRestaurants.map((restaurant) => (
                             <Link

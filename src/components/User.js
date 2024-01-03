@@ -1,13 +1,20 @@
-const User = () => {
+const User = (props) => {
+
+    const {data} = props
+    const {name, avatar_url, bio, blog} = data
+    
     return(
+
         <div className="user-card">
+            <img src={avatar_url} />
             <h2>
-                Name: Mayank
+                Name: {name}
             </h2>
             <h3>
-                Location: Punjab
+                Bio: {bio}
             </h3>
-            <h4>Contact: @mayank</h4>
+            <h4>Contact: <a href = {blog}>@linkedin</a></h4>
+            
         </div>
     )
 }
